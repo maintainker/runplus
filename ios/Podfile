@@ -1,9 +1,15 @@
 # Resolve react_native_pods.rb with node to allow for hoisting
-require Pod::Executable.execute_command('node', ['-p',
-  'require.resolve(
-    "react-native/scripts/react_native_pods.rb",
-    {paths: [process.argv[1]]},
-  )', __dir__]).strip
+def node_require(script)
+  require Pod::Executable.execute_command('node', ['-p',
+    "require.resolve(
+      '#{script}',
+      {paths: [process.argv[1]]},
+    )", __dir__]).strip
+end
+
+# 필수 스크립트 로드
+node_require('react-native/scripts/react_native_pods.rb')
+node_require('react-native-permissions/scripts/setup.rb')
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
@@ -14,14 +20,22 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-# react-native-maps dependencies
 target 'RunPlus' do
 
+  # react-native-maps dependencies
   pod 'react-native-maps', path: '../node_modules/react-native-maps'
   pod 'react-native-google-maps', path: '../node_modules/react-native-maps'  # Remove this line if you don't want to support GoogleMaps on iOS
   pod 'GoogleMaps'  # Remove this line if you don't want to support GoogleMaps on iOS
   pod 'Google-Maps-iOS-Utils' # Remove this line if you don't want to support GoogleMaps on iOS
+  # permissions_path = '../node_modules/react-native-permissions/ios'
+  # pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse.podspec"
 
+  # 권한 자동 설정 (필요한 권한만 주석 해제)
+  setup_permissions([
+    'LocationWhenInUse',  # 필수
+    # 'LocationAlways',   # 백그라운드 위치 권한 필요 시
+    # 'Camera',           # 카메라 권한 필요 시
+  ])
   config = use_native_modules!
 
   use_react_native!(
