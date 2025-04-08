@@ -1,97 +1,84 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🏃 RunPlus - 러닝 트래킹 앱
 
-# Getting Started
+<div align="center">
+  <img src="./assets/app-icon.png" width="150">
+  <p>러닝/걷기 경로를 기록하고 건강 통계를 제공하는 모바일 앱</p>
+</div>
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 📌 핵심 기능
 
-## Step 1: Start Metro
+| 기능               | 설명                                | 구현 상태 |
+| ------------------ | ----------------------------------- | --------- |
+| 🛰️ 실시간 GPS 추적 | Google Maps 기반 운동 경로 기록     | ✅ 80%    |
+| 📊 활동 통계       | 주간/월간 거리, 속도, 칼로리 시각화 | ⏳ 20%    |
+| 🔐 계정 연동       | Supabase Auth로 다중 기기 동기화    | ✅ 100%   |
+| 📱 오프라인 지원   | SQLite 로컬 저장 후 자동 동기화     | ❌ 0%     |
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 🛠 기술 스택
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+**Frontend**  
+![React Native](https://img.shields.io/badge/React_Native-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 
-```sh
-# Using npm
-npm start
+**Backend**  
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
 
-# OR using Yarn
-yarn start
+## 📅 개발 일정
+
+### Day 1: 인프라 구축
+
+```bash
+# 주요 작업
+- Expo 프로젝트 초기화 (TypeScript 템플릿)
+- Supabase 연동: Auth + DB 테이블 생성
+- 기본 네비게이션 구조 구현 (Bottom Tabs)
+Day 2: 코어 기능 개발
+javascript
+Copy
+// 현재 진행 사항
+1. 위치 권한 처리 (Android/iOS 별 설정 완료)
+2. react-native-maps와 Geolocation 연동
+3. 운동 시작/정지 로직 구현 중
+남은 개발 계획
+일차	주요 작업	비고
+3	통계 차트 구현 (Victory Native)	디자인 검토 필요
+4	오프라인 동기화 로직	SQLite 연동
+5	소셜 로그인 (Google/Apple)	OAuth 설정
+🚀 실행 방법
+의존성 설치
+
+bash
+Copy
+npm install
+npx pod-install
+환경 변수 설정 (.env)
+
+ini
+Copy
+SUPABASE_URL=your-project-url
+SUPABASE_KEY=your-anon-key
+개발 서버 실행
+
+bash
+Copy
+npm run android  # 또는 ios
+📂 프로젝트 구조
+Copy
+/src
+├── components/
+│   ├── MapViewer.tsx   # 지도 컴포넌트
+│   └── RunButton.tsx   # 운동 제어 버튼
+├── lib/
+│   └── supabase.ts     # Supabase 클라이언트
+├── navigation/
+│   └── MainTabNavigator.tsx
+└── screens/
+    ├── HomeScreen.tsx
+    └── ProfileScreen.tsx
+⚠️ 현재 이슈
+markdown
+Copy
+1. **Android 백그라운드 위치 추적**
+   - Foreground Service 구현 필요
 ```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
