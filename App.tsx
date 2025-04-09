@@ -9,9 +9,7 @@ const App = () => {
     <AuthProvider>
       <PaperProvider>
         <NavigationContainer>
-          <SafeAreaView style={styles.container}>
-            <AppNavigator />
-          </SafeAreaView>
+          <AppNavigator />
         </NavigationContainer>
       </PaperProvider>
     </AuthProvider>

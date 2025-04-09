@@ -71,9 +71,27 @@ const ProfileIcon = ({color = '#000', size = 24}: IconProps) => (
     />
   </Svg>
 );
+const CarotLeftIcon = ({color = '#000', size = 24}: IconProps) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path
+      d="M15 18L9 12L15 6"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
 
 export interface RunPlusSvgProps {
-  name: 'Home' | 'History' | 'Profile' | 'Email' | 'Google' | 'Apple';
+  name:
+    | 'Home'
+    | 'Record'
+    | 'Profile'
+    | 'Email'
+    | 'Google'
+    | 'Apple'
+    | 'CarotLeft';
   color: string;
   size: number;
 }
@@ -87,11 +105,12 @@ const RunPlusSvg = ({name, color, size}: RunPlusSvgProps) => {
         padding: 8,
       }}>
       {name === 'Home' && <HomeIcon color={color} size={size} />}
-      {name === 'History' && <TrackingIcon color={color} size={size} />}
+      {name === 'Record' && <TrackingIcon color={color} size={size} />}
       {name === 'Profile' && <ProfileIcon color={color} size={size} />}
       {name === 'Email' && <EmailIcon color={color} size={size} />}
       {name === 'Google' && <GoogleIcon color={color} size={size} />}
       {name === 'Apple' && <AppleIcon color={color} size={size} />}
+      {name === 'CarotLeft' && <CarotLeftIcon color={color} size={size} />}
     </View>
   );
 };

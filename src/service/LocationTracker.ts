@@ -1,21 +1,23 @@
-// services/LocationTracker.ts
-import Geolocation from 'react-native-geolocation-service';
+import Geolocation, {
+  GeoPosition,
+  GeoError,
+} from 'react-native-geolocation-service';
 
 let watchId: number | null = null;
 let route: LocationPoint[] = [];
 
-// 속도(km/h)에 따른 기록 간격 계산 (단위: 미터)
 const getDistanceFilter = (speed: number | null): number => {
-  if (!speed) return 5; // 기본값 (정지 상태)
+  if (!speed) return 5;
 
-  const speedKmh = speed * 3.6; // m/s → km/h 변환
-  if (speedKmh < 5) return 5; // 걷기: 5m
-  if (speedKmh < 20) return 10; // 조깅: 10m
-  return 20; // 달리기/사이클링: 20m
+  const speedKmh = speed * 3.6;
+  if (speedKmh < 5) return 5;
+  if (speedKmh < 20) return 10;
+  return 20;
 };
 
 export const startTracking = (onUpdate: (newPoint: LocationPoint) => void) => {
   let lastPoint: LocationPoint | null = null;
+  route = [];
 
   watchId = Geolocation.watchPosition(
     position => {
@@ -26,7 +28,6 @@ export const startTracking = (onUpdate: (newPoint: LocationPoint) => void) => {
         timestamp: position.timestamp,
       };
 
-      // 첫 점이거나 충분히 이동했을 때만 기록
       if (!lastPoint || shouldRecord(lastPoint, newPoint)) {
         route.push(newPoint);
         onUpdate(newPoint);
@@ -36,15 +37,14 @@ export const startTracking = (onUpdate: (newPoint: LocationPoint) => void) => {
     error => console.error(error),
     {
       enableHighAccuracy: true,
-      distanceFilter: 0, // 동적 계산을 위해 0으로 설정
-      interval: 1000, // iOS 최소 업데이트 간격 (1초)
+      distanceFilter: 0,
+      interval: 1000,
     },
   );
 };
 
-// 두 지점 간 거리 계산 (Haversine 공식)
 const getDistance = (pointA: LocationPoint, pointB: LocationPoint): number => {
-  const R = 6371e3; // 지구 반지름 (미터)
+  const R = 6371e3;
   const φ1 = (pointA.latitude * Math.PI) / 180;
   const φ2 = (pointB.latitude * Math.PI) / 180;
   const Δφ = ((pointB.latitude - pointA.latitude) * Math.PI) / 180;
@@ -57,7 +57,6 @@ const getDistance = (pointA: LocationPoint, pointB: LocationPoint): number => {
   return R * c;
 };
 
-// 기록 여부 결정 (동적 간격 적용)
 const shouldRecord = (
   lastPoint: LocationPoint,
   newPoint: LocationPoint,
@@ -73,4 +72,37 @@ export const stopTracking = () => {
     watchId = null;
   }
   return route;
+};
+
+export const calculateDistance = (route: LocationPoint[]): number => {
+  let total = 0;
+  for (let i = 1; i < route.length; i++) {
+    const prev = route[i - 1];
+    const curr = route[i];
+    total += getDistance(prev, curr);
+  }
+  return total;
+};
+
+export const getCurrentLocation = (
+  onSuccess: (position: GeoPosition) => void,
+  onError: (error: GeoError) => void,
+) => {
+  console.log('getCurrentLocation');
+  Geolocation.getCurrentPosition(
+    position => {
+      console.log('position', position);
+      onSuccess(position);
+    },
+    error => {
+      console.log('error', error);
+      onError(error);
+    },
+
+    {
+      enableHighAccuracy: true,
+      timeout: 20000,
+      maximumAge: 1000,
+    },
+  );
 };

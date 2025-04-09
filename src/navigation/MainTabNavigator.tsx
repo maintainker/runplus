@@ -3,23 +3,19 @@ import {useAuth} from '../context/AuthContext';
 import RunPlusSvg from '../asset/svg';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MainTabParamList, RootStackParamList} from '../@types/navigation';
-import {HistoryScreen, ProfileScreen, HomeScreen} from '../screens';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {ProfileScreen, HomeScreen, RecordScreen} from '../screens';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
-
-const Stack = createNativeStackNavigator();
 
 export default function MainTabNavigator() {
   const {isLoggedIn} = useAuth();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
-  // 프로필 탭의 screenOptions를 동적으로 설정
   const getScreenOptions = ({route}: {route: any}) => {
     const defaultOptions = {
       tabBarIcon: ({color, size}: {color: string; size: number}) => (
         <RunPlusSvg
-          name={route.name as 'Home' | 'History' | 'Profile'}
+          name={route.name as 'Home' | 'Record' | 'Profile'}
           color={color}
           size={24}
         />
@@ -45,9 +41,9 @@ export default function MainTabNavigator() {
     <Tab.Navigator screenOptions={getScreenOptions}>
       <Tab.Screen name="Home" component={HomeScreen} options={{title: '홈'}} />
       <Tab.Screen
-        name="History"
-        component={HistoryScreen}
-        options={{title: '기록'}}
+        name="Record"
+        component={RecordScreen}
+        options={{title: '기록', headerShown: false}}
       />
       <Tab.Screen
         listeners={{

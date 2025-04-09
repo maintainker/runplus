@@ -11,13 +11,7 @@ export default function AppNavigator() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {isLoggedIn ? (
-        <Stack.Screen
-          name="MainTabs"
-          component={MainTabNavigator}
-          options={{
-            headerShown: false,
-          }}
-        />
+        <Stack.Screen name="MainTabs" component={MainTabNavigator} />
       ) : (
         <>
           <Stack.Screen name="Welcome" component={WelcomeScreen} />

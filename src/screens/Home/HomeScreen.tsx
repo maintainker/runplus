@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
@@ -12,7 +13,7 @@ export default function HomeScreen() {
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, {paddingTop: insets.top}]}>
+    <SafeAreaView style={[styles.container, {paddingTop: insets.top}]}>
       <ScrollView>
         <View style={styles.header}>
           <Text style={styles.title}>RunPlus</Text>
@@ -28,7 +29,7 @@ export default function HomeScreen() {
           <Text>5.2km • 28:15</Text>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
