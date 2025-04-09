@@ -1,7 +1,7 @@
 // src/lib/supabase.ts
 import {createClient} from '@supabase/supabase-js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import 'react-native-url-polyfill/auto';
 // AsyncStorage 기반의 커스텀 저장소 어댑터
 const asyncStorageAdapter = {
   getItem: async (key: string) => {

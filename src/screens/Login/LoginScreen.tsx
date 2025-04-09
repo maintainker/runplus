@@ -12,6 +12,7 @@ import {supabase} from '../../lib/supabase';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../@types/navigation';
+import {useAuth} from '../../context/AuthContext';
 
 export default function LoginScreen() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -19,24 +20,14 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const {login} = useAuth();
 
   const handleLogin = async () => {
-    console.log('login');
-    return;
     setIsLoading(true);
     setError(null);
-
     try {
-      const {data, error} = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) {
-        setError(error?.message || '로그인 중 오류가 발생했습니다.');
-      } else {
-        navigation.goBack();
-      }
+      await login(email, password);
+      navigation.goBack();
     } catch (error) {
       setError('로그인 중 오류가 발생했습니다.');
     } finally {

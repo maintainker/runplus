@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   SafeAreaView,
+  Alert,
 } from 'react-native';
 import {supabase} from '../../lib/supabase';
 import {useNavigation} from '@react-navigation/native';
@@ -26,26 +27,43 @@ export default function SignUpScreen() {
       setError('비밀번호가 일치하지 않습니다.');
       return;
     }
-
     setIsLoading(true);
     setError(null);
-
     try {
       const {data, error} = await supabase.auth.signUp({
         email,
         password,
-        options: {
-          data: {
-            nickname,
-          },
-        },
       });
-
+      const {user} = data;
       if (error) {
+        console.log(error.message);
         setError(error.message || '회원가입 중 오류가 발생했습니다.');
-      } else {
-        navigation.goBack();
+        return;
       }
+      const {error: profileError} = await supabase.from('profiles').insert([
+        {
+          id: user?.id,
+          nickname,
+          email,
+          isactive: true,
+        },
+      ]);
+      if (profileError) {
+        console.log(profileError.message);
+        setError(profileError.message || '프로필 생성 중 오류가 발생했습니다.');
+        return;
+      }
+      Alert.alert(
+        '🎉 회원가입이 완료되었습니다',
+        `가입하신 ${email} 주소로 인증 메일을 발송했습니다.\n\n메일의 인증 링크를 클릭한 후 로그인해주세요.\n(스팸 메일함도 확인해주세요)`,
+        [
+          {
+            text: '확인',
+            onPress: () => navigation.goBack(),
+          },
+        ],
+        {cancelable: false},
+      );
     } catch (error) {
       setError('회원가입 중 오류가 발생했습니다.');
     } finally {

@@ -8,11 +8,16 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function AppNavigator() {
   const {isLoggedIn} = useAuth();
-  console.log('isLoggedIn', isLoggedIn);
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {isLoggedIn ? (
-        <Stack.Screen name="MainTabs" component={MainTabNavigator} />
+        <Stack.Screen
+          name="MainTabs"
+          component={MainTabNavigator}
+          options={{
+            headerShown: false,
+          }}
+        />
       ) : (
         <>
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
