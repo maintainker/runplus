@@ -12,6 +12,7 @@ import {supabase} from '../../lib/supabase';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../@types/navigation';
+import RunPlusSvg from '../../asset/svg';
 
 export default function SignUpScreen() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -79,7 +80,7 @@ export default function SignUpScreen() {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
         <TouchableOpacity onPress={goBack} style={styles.backButton}>
-          <Text style={styles.backButtonText}>← 뒤로</Text>
+          <RunPlusSvg name="CarotLeft" color="black" size={24} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>회원가입</Text>
         <View style={styles.headerRight} />

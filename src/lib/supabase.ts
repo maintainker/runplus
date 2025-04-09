@@ -35,6 +35,6 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     storage: asyncStorageAdapter,
     autoRefreshToken: true,
     persistSession: true,
-    detectSessionInUrl: false, // React Native에서는 false로 설정
+    detectSessionInUrl: false,
   },
 });

@@ -131,9 +131,6 @@ const RecordScreen = () => {
     <View style={styles.container}>
       <SafeAreaView style={styles.header}>
         <View style={styles.navbar}>
-          <TouchableOpacity style={styles.navButton}>
-            <RunPlusSvg name="CarotLeft" color="black" size={24} />
-          </TouchableOpacity>
           <Text style={styles.runTitle}>Run</Text>
         </View>
       </SafeAreaView>
@@ -205,11 +202,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-  },
-  navButton: {
-    position: 'absolute',
-    left: 16,
-    padding: 4,
   },
   runTitle: {
     fontSize: 18,
