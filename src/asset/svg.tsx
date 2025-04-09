@@ -1,7 +1,10 @@
 import {View} from 'react-native';
 import {Svg, Path} from 'react-native-svg';
+import EmailIcon from './Email';
+import GoogleIcon from './Google';
+import AppleIcon from './Apple';
 
-interface IconProps {
+export interface IconProps {
   color: string;
   size: number;
 }
@@ -70,7 +73,7 @@ const ProfileIcon = ({color = '#000', size = 24}: IconProps) => (
 );
 
 export interface RunPlusSvgProps {
-  name: 'Home' | 'History' | 'Profile';
+  name: 'Home' | 'History' | 'Profile' | 'Email' | 'Google' | 'Apple';
   color: string;
   size: number;
 }
@@ -86,6 +89,9 @@ const RunPlusSvg = ({name, color, size}: RunPlusSvgProps) => {
       {name === 'Home' && <HomeIcon color={color} size={size} />}
       {name === 'History' && <TrackingIcon color={color} size={size} />}
       {name === 'Profile' && <ProfileIcon color={color} size={size} />}
+      {name === 'Email' && <EmailIcon color={color} size={size} />}
+      {name === 'Google' && <GoogleIcon color={color} size={size} />}
+      {name === 'Apple' && <AppleIcon color={color} size={size} />}
     </View>
   );
 };

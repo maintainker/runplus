@@ -19,7 +19,7 @@ export default function HomeScreen() {
         </View>
 
         <TouchableOpacity style={styles.startButton}>
-          <Text style={styles.buttonText}>러닝1 시작하기</Text>
+          <Text style={styles.buttonText}>러닝 시작하기</Text>
         </TouchableOpacity>
 
         <Text style={styles.sectionTitle}>최근 기록</Text>

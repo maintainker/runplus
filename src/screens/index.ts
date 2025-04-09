@@ -7,3 +7,6 @@ export {default as RunTrackingScreen} from './Home/HomeScreen';
 export {default as ActivityHistoryScreen} from './Home/HomeScreen';
 export {default as HistoryScreen} from './Home/HomeScreen';
 export {default as ProfileScreen} from './Home/HomeScreen';
+export {default as LoginScreen} from './Login/LoginScreen';
+export {default as WelcomeScreen} from './Welcome/WelcomeScreen';
+export {default as SignUpScreen} from './SignUp/SignUpScreen';
