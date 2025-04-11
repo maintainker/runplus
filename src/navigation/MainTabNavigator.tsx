@@ -3,7 +3,7 @@ import {useAuth} from '../context/AuthContext';
 import RunPlusSvg from '../asset/svg';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MainTabParamList, RootStackParamList} from '../@types/navigation';
-import {ProfileScreen, HomeScreen, RecordScreen} from '../screens';
+import {HomeScreen, RecordScreen, SettingScreen} from '../screens';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
@@ -48,17 +48,15 @@ export default function MainTabNavigator() {
       <Tab.Screen
         listeners={{
           tabPress: e => {
-            e.preventDefault();
-            console.log('tabPress', isLoggedIn);
             if (!isLoggedIn) {
-              console.log('login');
+              e.preventDefault();
               navigation.navigate('Login');
             }
           },
         }}
         name="Profile"
-        component={ProfileScreen}
-        options={{title: '프로필'}}
+        component={SettingScreen}
+        options={{title: '프로필', headerShown: false}}
       />
     </Tab.Navigator>
   );

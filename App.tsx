@@ -4,13 +4,16 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 import AppNavigator from './src/navigation/AppNavigator';
 import {AuthProvider} from './src/context/AuthContext';
 import {PaperProvider} from 'react-native-paper';
+import {WebViewBridgeProvider} from './src/context/WebViewContext';
 const App = () => {
   return (
     <AuthProvider>
       <PaperProvider>
-        <NavigationContainer>
-          <AppNavigator />
-        </NavigationContainer>
+        <WebViewBridgeProvider>
+          <NavigationContainer>
+            <AppNavigator />
+          </NavigationContainer>
+        </WebViewBridgeProvider>
       </PaperProvider>
     </AuthProvider>
   );
