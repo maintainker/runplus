@@ -11,7 +11,7 @@
 		1FD4DB841406D530188A718A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		D726048FBAB3D7F2B32DBC04 /* libPods-RunPlus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 349F39151C814B3D2DF6A821 /* libPods-RunPlus.a */; };
+		F1DB1156487ED93D696D794C /* libPods-RunPlus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E80804F8074C766B824F66F /* libPods-RunPlus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,12 +19,12 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RunPlus/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RunPlus/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = RunPlus/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		349F39151C814B3D2DF6A821 /* libPods-RunPlus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RunPlus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		67472F76BF3EA213E36BC594 /* Pods-RunPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunPlus.debug.xcconfig"; path = "Target Support Files/Pods-RunPlus/Pods-RunPlus.debug.xcconfig"; sourceTree = "<group>"; };
+		19EA1DC28B00A7D3B58E875B /* Pods-RunPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunPlus.debug.xcconfig"; path = "Target Support Files/Pods-RunPlus/Pods-RunPlus.debug.xcconfig"; sourceTree = "<group>"; };
+		2E80804F8074C766B824F66F /* libPods-RunPlus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RunPlus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = RunPlus/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RunPlus/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A1FF7EA3267F45304EDBFCF0 /* Pods-RunPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunPlus.release.xcconfig"; path = "Target Support Files/Pods-RunPlus/Pods-RunPlus.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EDEF7C2E8C73F74F22399A61 /* Pods-RunPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunPlus.release.xcconfig"; path = "Target Support Files/Pods-RunPlus/Pods-RunPlus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D726048FBAB3D7F2B32DBC04 /* libPods-RunPlus.a in Frameworks */,
+				F1DB1156487ED93D696D794C /* libPods-RunPlus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				349F39151C814B3D2DF6A821 /* libPods-RunPlus.a */,
+				2E80804F8074C766B824F66F /* libPods-RunPlus.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -92,8 +92,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				67472F76BF3EA213E36BC594 /* Pods-RunPlus.debug.xcconfig */,
-				A1FF7EA3267F45304EDBFCF0 /* Pods-RunPlus.release.xcconfig */,
+				19EA1DC28B00A7D3B58E875B /* Pods-RunPlus.debug.xcconfig */,
+				EDEF7C2E8C73F74F22399A61 /* Pods-RunPlus.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -105,13 +105,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RunPlus" */;
 			buildPhases = (
-				7D8F59BEED60447783C6B505 /* [CP] Check Pods Manifest.lock */,
+				9CAB2F44F237C23E287EFB4A /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				253358656EE3F01F7C261C0F /* [CP] Embed Pods Frameworks */,
-				F1550482AF9714B00513E0CD /* [CP] Copy Pods Resources */,
+				B0A4229598028938009E891A /* [CP] Embed Pods Frameworks */,
+				3B954C11234627DAA84F8A0B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,24 +183,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		253358656EE3F01F7C261C0F /* [CP] Embed Pods Frameworks */ = {
+		3B954C11234627DAA84F8A0B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7D8F59BEED60447783C6B505 /* [CP] Check Pods Manifest.lock */ = {
+		9CAB2F44F237C23E287EFB4A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -222,21 +222,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F1550482AF9714B00513E0CD /* [CP] Copy Pods Resources */ = {
+		B0A4229598028938009E891A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RunPlus/Pods-RunPlus-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -255,7 +255,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67472F76BF3EA213E36BC594 /* Pods-RunPlus.debug.xcconfig */;
+			baseConfigurationReference = 19EA1DC28B00A7D3B58E875B /* Pods-RunPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -284,7 +284,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1FF7EA3267F45304EDBFCF0 /* Pods-RunPlus.release.xcconfig */;
+			baseConfigurationReference = EDEF7C2E8C73F74F22399A61 /* Pods-RunPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
