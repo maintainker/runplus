@@ -7,14 +7,14 @@ import {RootStackParamList} from '../../@types/navigation';
 import {NavigationProp} from '@react-navigation/native';
 
 type MessageType = {
-  type: 'NAVIGATE_BACK' | 'NAVIGATE';
+  type: 'NAVIGATE_BACK';
   payload?: unknown;
 };
 
 type WebViewBridgeContextType = {
   sendMessage: (type: string, payload?: any) => void;
   handleMessage: (event: WebViewMessageEvent) => void;
-  webViewRef: React.RefObject<WebView>;
+  webViewRef: React.RefObject<WebView | null>;
 };
 
 const WebViewBridgeContext = createContext<WebViewBridgeContextType | null>(
@@ -36,7 +36,7 @@ export const WebViewBridgeProvider = ({children}: {children: ReactNode}) => {
   const handleMessage = (event: WebViewMessageEvent) => {
     const {type, payload}: MessageType = JSON.parse(event.nativeEvent.data);
     if (handlers[type]) {
-      handlers[type](navigation, payload);
+      handlers[type](navigation);
     }
   };
 

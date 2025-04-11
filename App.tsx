@@ -9,11 +9,11 @@ const App = () => {
   return (
     <AuthProvider>
       <PaperProvider>
-        <WebViewBridgeProvider>
-          <NavigationContainer>
+        <NavigationContainer>
+          <WebViewBridgeProvider>
             <AppNavigator />
-          </NavigationContainer>
-        </WebViewBridgeProvider>
+          </WebViewBridgeProvider>
+        </NavigationContainer>
       </PaperProvider>
     </AuthProvider>
   );
