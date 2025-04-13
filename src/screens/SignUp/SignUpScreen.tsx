@@ -112,6 +112,7 @@ export default function SignUpScreen() {
           secureTextEntry
           value={password}
           onChangeText={setPassword}
+          textContentType="none"
         />
 
         <TextInput
@@ -120,6 +121,7 @@ export default function SignUpScreen() {
           secureTextEntry
           value={confirmPassword}
           onChangeText={setConfirmPassword}
+          textContentType="none"
         />
 
         <TouchableOpacity

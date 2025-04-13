@@ -8,7 +8,6 @@ import {
   Alert,
 } from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker, Polyline} from 'react-native-maps';
-import RunPlusSvg from '../../asset/svg';
 import {
   calculateDistance,
   getCurrentLocation,
@@ -18,6 +17,112 @@ import {
 import {RESULTS} from 'react-native-permissions';
 import {requestLocationPermission} from '../../util/PermissionUtils';
 import {saveActivity} from '../../service/StorageService';
+import {useAuth} from '../../context/AuthContext';
+let dummyCount = 0;
+const dummyActivities = [
+  {
+    id: '1',
+    route: [
+      {
+        latitude: 37.5665,
+        longitude: 126.978,
+        speed: 2.5,
+        timestamp: 1736485200000,
+      }, // 2025-01-10 10:00:00
+      {
+        latitude: 37.567,
+        longitude: 126.9785,
+        speed: 2.7,
+        timestamp: 1736485260000,
+      }, // 1분 후
+      {
+        latitude: 37.5675,
+        longitude: 126.979,
+        speed: 2.6,
+        timestamp: 1736485320000,
+      }, // 2분 후
+    ],
+    distance: 120.5, // 대략 120미터
+    duration: 120, // 2분
+    avgSpeed: 120.5 / 120, // 약 1.004 m/s
+    timestamp: 1736485200000,
+    date: '2025-01-10T10:00:00.000Z',
+  },
+  {
+    id: '2',
+    route: [
+      {
+        latitude: 37.555,
+        longitude: 127.0,
+        speed: 3.0,
+        timestamp: 1736571600000,
+      }, // 2025-01-11 10:00:00
+      {
+        latitude: 37.5558,
+        longitude: 127.0005,
+        speed: 3.2,
+        timestamp: 1736571660000,
+      },
+      {
+        latitude: 37.5566,
+        longitude: 127.001,
+        speed: 3.1,
+        timestamp: 1736571720000,
+      },
+      {
+        latitude: 37.5574,
+        longitude: 127.0015,
+        speed: 3.0,
+        timestamp: 1736571780000,
+      },
+    ],
+    distance: 200.0, // 대략 200미터
+    duration: 180, // 3분
+    avgSpeed: 200.0 / 180, // 약 1.111 m/s
+    timestamp: 1736571600000,
+    date: '2025-01-11T10:00:00.000Z',
+  },
+  {
+    id: '3',
+    route: [
+      {
+        latitude: 37.57,
+        longitude: 126.99,
+        speed: 2.8,
+        timestamp: 1736658000000,
+      }, // 2025-01-12 10:00:00
+      {
+        latitude: 37.5705,
+        longitude: 126.9905,
+        speed: 2.9,
+        timestamp: 1736658060000,
+      },
+      {
+        latitude: 37.571,
+        longitude: 126.991,
+        speed: 2.7,
+        timestamp: 1736658120000,
+      },
+      {
+        latitude: 37.5715,
+        longitude: 126.9915,
+        speed: 2.8,
+        timestamp: 1736658180000,
+      },
+      {
+        latitude: 37.572,
+        longitude: 126.992,
+        speed: 2.6,
+        timestamp: 1736658240000,
+      },
+    ],
+    distance: 300.0, // 대략 300미터
+    duration: 240, // 4분
+    avgSpeed: 300.0 / 240, // 약 1.25 m/s
+    timestamp: 1736658000000,
+    date: '2025-01-12T10:00:00.000Z',
+  },
+];
 
 const RecordScreen = () => {
   const [isTracking, setIsTracking] = useState(false);
@@ -26,6 +131,7 @@ const RecordScreen = () => {
   );
   const [route, setRoute] = useState<LocationPoint[]>([]);
   const mapRef = useRef<MapView>(null);
+  const {user} = useAuth();
 
   const handleStartTracking = async () => {
     try {
@@ -60,7 +166,10 @@ const RecordScreen = () => {
 
   const handleStopTracking = async () => {
     try {
-      const finalRoute = stopTracking();
+      // Alert.alert('기록 완료', '기록을 완료했습니다.' + user?.id);
+      // return;
+      // const finalRoute = stopTracking();
+      const finalRoute = dummyActivities[dummyCount++].route;
       setIsTracking(false);
 
       if (finalRoute.length < 2) {
@@ -76,7 +185,6 @@ const RecordScreen = () => {
       const avgSpeed = duration > 0 ? distance / duration : 0;
 
       const newActivity: Activity = {
-        id: Date.now().toString(),
         route: finalRoute,
         distance,
         duration,
@@ -91,7 +199,8 @@ const RecordScreen = () => {
         `${distance.toFixed(2)}m 달리기를 기록했습니다!`,
       );
     } catch (error) {
-      console.error('기록 저장 오류:', error);
+      Alert.alert('기록 저장 오류:', (error as Error).message);
+      // console.error('기록 저장 오류:', error);
     }
   };
   useEffect(() => {

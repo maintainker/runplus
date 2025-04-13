@@ -6,7 +6,7 @@ declare type LocationPoint = {
 };
 
 declare type Activity = {
-  id: string;
+  id?: string;
   route: LocationPoint[];
   distance: number;
   duration: number;

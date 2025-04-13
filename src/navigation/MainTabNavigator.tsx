@@ -39,7 +39,11 @@ export default function MainTabNavigator() {
 
   return (
     <Tab.Navigator screenOptions={getScreenOptions}>
-      <Tab.Screen name="Home" component={HomeScreen} options={{title: '홈'}} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{title: '홈', headerShown: false}}
+      />
       <Tab.Screen
         name="Record"
         component={RecordScreen}

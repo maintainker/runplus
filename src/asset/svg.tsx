@@ -1,16 +1,20 @@
-import {View} from 'react-native';
+import {View, StyleProp, ViewStyle} from 'react-native';
 import {Svg, Path} from 'react-native-svg';
 import EmailIcon from './Email';
 import GoogleIcon from './Google';
 import AppleIcon from './Apple';
-
+import Person from './Person';
+import Search from './Search';
+import Comment from './Comment';
+import Heart from './Heart';
 export interface IconProps {
   color: string;
   size: number;
+  style?: StyleProp<ViewStyle>;
 }
 
-const HomeIcon = ({color = '#000', size = 24}: IconProps) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+const HomeIcon = ({color = '#000', size = 24, style}: IconProps) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={style}>
     <Path
       d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"
       stroke={color}
@@ -28,8 +32,8 @@ const HomeIcon = ({color = '#000', size = 24}: IconProps) => (
   </Svg>
 );
 
-const TrackingIcon = ({color = '#000', size = 24}: IconProps) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+const TrackingIcon = ({color = '#000', size = 24, style}: IconProps) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={style}>
     <Path
       d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
       stroke={color}
@@ -53,8 +57,8 @@ const TrackingIcon = ({color = '#000', size = 24}: IconProps) => (
     />
   </Svg>
 );
-const ProfileIcon = ({color = '#000', size = 24}: IconProps) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+const ProfileIcon = ({color = '#000', size = 24, style}: IconProps) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={style}>
     <Path
       d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
       stroke={color}
@@ -71,8 +75,8 @@ const ProfileIcon = ({color = '#000', size = 24}: IconProps) => (
     />
   </Svg>
 );
-const CarotLeftIcon = ({color = '#000', size = 24}: IconProps) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+const CarotLeftIcon = ({color = '#000', size = 24, style}: IconProps) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={style}>
     <Path
       d="M15 18L9 12L15 6"
       stroke={color}
@@ -83,20 +87,29 @@ const CarotLeftIcon = ({color = '#000', size = 24}: IconProps) => (
   </Svg>
 );
 
+const Icons = {
+  Home: HomeIcon,
+  Record: TrackingIcon,
+  Profile: ProfileIcon,
+  Email: EmailIcon,
+  Google: GoogleIcon,
+  Apple: AppleIcon,
+  CarotLeft: CarotLeftIcon,
+  Person: Person,
+  Search: Search,
+  Comment: Comment,
+  Heart: Heart,
+};
+
 export interface RunPlusSvgProps {
-  name:
-    | 'Home'
-    | 'Record'
-    | 'Profile'
-    | 'Email'
-    | 'Google'
-    | 'Apple'
-    | 'CarotLeft';
+  name: keyof typeof Icons;
   color: string;
   size: number;
+  style?: StyleProp<ViewStyle>;
 }
 
-const RunPlusSvg = ({name, color, size}: RunPlusSvgProps) => {
+const RunPlusSvg = ({name, color, size, style}: RunPlusSvgProps) => {
+  const IconComponent = Icons[name];
   return (
     <View
       style={{
@@ -104,13 +117,9 @@ const RunPlusSvg = ({name, color, size}: RunPlusSvgProps) => {
         alignItems: 'center',
         padding: 8,
       }}>
-      {name === 'Home' && <HomeIcon color={color} size={size} />}
-      {name === 'Record' && <TrackingIcon color={color} size={size} />}
-      {name === 'Profile' && <ProfileIcon color={color} size={size} />}
-      {name === 'Email' && <EmailIcon color={color} size={size} />}
-      {name === 'Google' && <GoogleIcon color={color} size={size} />}
-      {name === 'Apple' && <AppleIcon color={color} size={size} />}
-      {name === 'CarotLeft' && <CarotLeftIcon color={color} size={size} />}
+      {IconComponent && (
+        <IconComponent color={color} size={size} style={style} />
+      )}
     </View>
   );
 };
